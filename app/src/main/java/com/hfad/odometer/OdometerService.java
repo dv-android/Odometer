@@ -54,8 +54,13 @@ public class OdometerService extends Service {
             }
         };
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,locationListener);
+        try{
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,locationListener);
+        }catch(SecurityException e){
+
+        }
+
     }
 
     public double getMiles(){
